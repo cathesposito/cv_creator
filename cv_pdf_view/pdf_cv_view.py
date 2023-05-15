@@ -161,7 +161,8 @@ class PdfCreatorPort:
                                             fontName='Vera',
                                             )
 
-        footer = Paragraph('PDF created by personal project. https://github.com/cathesposito/cv_creator :)', footer_style)
+        footer = Paragraph(
+            'PDF created using CV Creator. https://github.com/cathesposito/cv_creator :)', footer_style)
 
         w, h = footer.wrap(doc.width, doc.bottomMargin)
 
