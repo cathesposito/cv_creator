@@ -56,7 +56,7 @@ class PdfCreatorPort:
             position = str(row.position)
             address = str(row.address)
             phone = str(row.phone)
-            linkedin = str(row.linkedin)
+            email = str(row.email)
 
         # name ----------------------------------------------
         header_text1_style = ParagraphStyle('My Para style',
@@ -68,7 +68,7 @@ class PdfCreatorPort:
 
         w, h = header_text1.wrap(doc.width, doc.bottomMargin)
 
-        header_text1.drawOn(canvas,   0.4*w - doc.leftMargin,
+        header_text1.drawOn(canvas, 0.4*w - doc.leftMargin,
                             doc.height + doc.topMargin - 1.5*h)
 
         # ----------------------------------------------------
@@ -107,18 +107,18 @@ class PdfCreatorPort:
 
         # ----------------------------------------------------
 
-        # linkedin -------------------------------------------
+        # email -------------------------------------------
 
         header_text4_style = ParagraphStyle('My Para style',
                                             fontSize=10,
                                             fontName='Vera',
                                             )
 
-        header_text4 = Paragraph(linkedin, header_text4_style)
+        header_text4 = Paragraph(email, header_text4_style)
 
         w, h = header_text4.wrap(doc.width, doc.bottomMargin)
 
-        header_text4.drawOn(canvas, doc.leftMargin + 0.3*w,
+        header_text4.drawOn(canvas, doc.leftMargin + 0.38*w,
                             doc.height + doc.topMargin - 5.3*h)
 
         # ----------------------------------------------------

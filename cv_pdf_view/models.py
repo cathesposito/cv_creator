@@ -19,9 +19,10 @@ class PersonalInfo(models.Model):
 
     phone = models.CharField(max_length=500)
 
+    email = models.CharField(max_length=500)
+
     resume_objective = models.TextField()
 
-    linkedin = models.URLField() 
 
     def __str__(self):
         return f"Name {self.name}"
@@ -71,6 +72,7 @@ class Study(models.Model):
 
     def __str__(self):
         return f"Study {self.title}"
+
 
 class SocialMedia(models.Model):
     path = models.URLField()
