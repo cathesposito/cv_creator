@@ -1,0 +1,33 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block main %}
+
+<a class="admin-a" href="admin/">Admin</a>
+
+
+<div class="card-group">
+  <div class="card" id="card2">
+    <a href="{% url 'personal_info' %}">User Information</a>
+  </div>
+  <div class="card" id="card3">
+    <a href="{% url 'job' %}">Job</a>
+  </div>
+  <div class="card" id="card4">
+    <a href="{% url 'study' %}">Study</a>
+  </div>
+  <div class="card" id="card5">
+    <a href="{% url 'social_media' %}">Social Media</a>
+  </div>
+  <div class="card" id="card6">
+    <a href="{% url 'language' %}">Language</a>
+  </div>
+  <div class="card" id="card7">
+    <a href="{% url 'soft_skill' %}">Soft Skill</a>
+  </div>
+  <div class="card" id="card8">
+    <a href="{% url 'hard_skill' %}">Hard Skill</a>
+  </div>
+</div>
+
+{% endblock %}

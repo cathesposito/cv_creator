@@ -1,0 +1,25 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="login-outter-div">
+    <div class="login-middle-div">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            <input style="display: flex; margin: 12px auto 0 auto;" class="btn btn-login" type="submit" value="Log In">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

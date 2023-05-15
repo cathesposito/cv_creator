@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Title -->
+  <title> CV Creator </title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{% static 'css/style_views.css' %}" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+
+</head>
+
+<body>
+  <header>
+    <img src="{% static 'images/PDF.png' %}" alt="My image">
+  </header>
+
+  <nav>
+    {% if user.is_authenticated %}
+
+    <a class="nav-a" href="{% url 'home' %}">Home</a>
+
+    {% else %}
+
+    <p>&nbsp;</p>
+
+    {% endif %}
+  </nav>
+
+  <main>
+    {% if user.is_authenticated %}
+    <article>
+
+      <h1> {% block heading %} {% endblock %} </h1>
+
+      {% block main %} {% endblock %}
+
+      {% else %}
+
+      <div class="login-outter-div">
+        <div class="login-middle-div">
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <table>
+              <tr>
+                <td>{{ form.username }}</td>
+              </tr>
+              <tr>
+                <td>{{ form.password }}</td>
+              </tr>
+            </table>
+            <input style="display: flex; margin: 12px auto 0 auto;" class="btn btn-login" type="submit" value="Log In">
+            <input type="hidden" name="next" value="{{ next }}">
+          </form>
+        </div>
+      </div>
+
+      
+
+    </article>
+
+    {% endif %}
+
+  </main>
+
+  <footer>
+    
+  </footer>
+
+  {% block script %} {% endblock %}
+  
+</body>
+
+</html>

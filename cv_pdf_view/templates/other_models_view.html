@@ -1,0 +1,33 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block heading %} {{ title }} {% endblock %}
+
+{% block main %}
+
+<div class="grid-row">
+
+
+<table class="table grid-item">
+    <thead>
+        {% for header in table_headers %}
+        <th scope="col">{{ header }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+        {% for field in dict_part %}
+        <tr>
+            {% for i in field %}
+            <td> {{ i }} </td>
+            {% endfor %}
+            <td>&nbsp;</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+
+
+{% endblock %}

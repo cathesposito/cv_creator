@@ -1,0 +1,282 @@
+[
+    {
+        "model": "cv_pdf_view.personalinfo",
+        "pk": 1,
+        "fields": {
+            "name": "Catarina Esposito Mendes",
+            "picture": "user/1627514016677.jpeg",
+            "image": "images/5_ww5zeA8.png",
+            "position": "Web Developer",
+            "address": "Kitchener, ON, Canada",
+            "phone": "5198303648",
+            "resume_objective": "Web developer with 2+ years of experience providing organized and efficient work. Many years of teaching experience gave me tools that makes me a very adaptable and curious person. I began my carrier using pure web development tools, than worked with client own framework and now I am working with high-level python framework called Django, where the internal web application is built.",
+            "linkedin": "https://www.linkedin.com/in/catarina-e-mendes/"
+        }
+    },
+    {
+        "model": "cv_pdf_view.job",
+        "pk": 1,
+        "fields": {
+            "title": "Web Developer",
+            "location": "University of Guelph",
+            "start": "2022-06-08",
+            "end": null,
+            "current": true,
+            "description": "First Lead position as web developer. We are responsible for refactoring a web application to create optimized systems using Django framework. All computational scripts are written in Python language. The app is containerize using Docker. The development uses Gitlab to control local and remote branches. The production application runs in Ubuntu Linux Server in Docker containers. I am responsible for writing documentations and organizing development using Gitlab and Trello tools. We created new user interface and usability with CSS and Javascript. Create and edit schemas. I try to teach and practice best coding practices for performance. We use ReportLab PDF library to write PDF views, so the client can have easy and good documentation about each optimized system.",
+            "soft_skills": "· Work ethic · Good communication · Self-motivated · Excellent problem-solving mindset · Creative · Good time management · Organized · Confidence · Adaptable",
+            "hard_skills": "· Django · Python · PostgreSQL · Docker · JavaScript · Unit-testing · RestAPI · CSS · HTML · Celery · JSON"
+        }
+    },
+    {
+        "model": "cv_pdf_view.job",
+        "pk": 2,
+        "fields": {
+            "title": "Frontend Developer",
+            "location": "LearnNorth Inc",
+            "start": "2021-12-10",
+            "end": "2022-06-08",
+            "current": null,
+            "description": "I worked with assessment development to support digital courses development in client's Learning Management System (LMS). I used front-end developer type tasks support on digital course development and course reversion projects. I created lesson content page development using scripts provided by our client's content writer adhering to client's Bootstrap based framework guidelines and/or CourseBuilder tool. Many interactives were created using jQuery UI, AngularJS type interactives. I complete page validation check and fixes for any pages created or edited. I was under peer verification review of the deliverables prior to delivery to client. I fixed assigned defects found by our verification review and resolved any defects reported or changes requested as a result of client review upon delivery. I also complete title audit for lesson / assessment naming consistency.",
+            "soft_skills": "· Work ethic · Good communication · Excellent problem-solving mindset · Creative · Adaptable · Good time management",
+            "hard_skills": "· Web Development · JavaScript · HTML · Bootstrap · jQuery"
+        }
+    },
+    {
+        "model": "cv_pdf_view.job",
+        "pk": 3,
+        "fields": {
+            "title": "Teacher - Mechanical Technician",
+            "location": "Secretaria de Educação do Estado de Pernambuco",
+            "start": "2017-03-01",
+            "end": "2021-07-31",
+            "current": null,
+            "description": "I created new lesson plants for each semester. I graded and evaluated student assignments, papers and course work. I tried to enhance student learning by optimizing wide range of instructional approaches and innovative classroom activities including Video-Lessons and Lab works. I taught many courses including: Mechanics of Materials, Mechanical Technology, Machine Elements, Industrial Maintenance, Mechanical Construction Materials, Thermal Machines, Metrology.",
+            "soft_skills": "· Work ethic · Good communication · Self-motivated · Creative · Adaptable · Negotiation · Empathic · Good Organization · Confidence",
+            "hard_skills": "· Mechanical Engineering · Engineering · Teaching"
+        }
+    },
+    {
+        "model": "cv_pdf_view.study",
+        "pk": 1,
+        "fields": {
+            "title": "Bootcamp Programa de Treinamento Hiring Coders, Web Developer Full Stack (Online)",
+            "location": "Gama Academy",
+            "start": "2021-05-01",
+            "end": "2021-06-15",
+            "current": false,
+            "description": "Bootcamp organized by Gama Academy for the Vetex company.",
+            "description2": "",
+            "skills": "· PostgreSQL · JavaScript · HTML · jQuery · CSS · React.js · Bootstrap · Unix Command Line · Node.js · Single Page Applications · GraphQL · Web Development"
+        }
+    },
+    {
+        "model": "cv_pdf_view.study",
+        "pk": 2,
+        "fields": {
+            "title": "TreinaWeb Multi-stack",
+            "location": "TreinaWeb",
+            "start": "2021-06-01",
+            "end": "2021-06-15",
+            "current": false,
+            "description": "Two weeks bootcamp organized by TreinaWeb.",
+            "description2": "",
+            "skills": "· PostgreSQL · JavaScript · HTML · jQuery · React.js · Django · Material-UI · TypeScript · Single Page Applications"
+        }
+    },
+    {
+        "model": "cv_pdf_view.study",
+        "pk": 3,
+        "fields": {
+            "title": "Master of Engineering: Mechanical Engineering",
+            "location": "Federal University of Pernambuco",
+            "start": "2013-09-01",
+            "end": "2015-12-31",
+            "current": false,
+            "description": "Participated in academic research, with the elaboration of articles published in congresses and magazines. I was part of the university program for students to research Petrol technologies for PETROBRAS.",
+            "description2": "One Patent. Two articles published in Journals. Six articles published in Conferences.",
+            "skills": "· Mechanical Engineering · Excel · Statistical modeling"
+        }
+    },
+    {
+        "model": "cv_pdf_view.study",
+        "pk": 4,
+        "fields": {
+            "title": "Bachelor of Engineering: Mechanical Engineering",
+            "location": "Federal University of Pernambuco",
+            "start": "2008-08-01",
+            "end": "2013-06-30",
+            "current": false,
+            "description": "Participated in academic research, with the elaboration of articles published in congresses and magazines. I was part of the university's women's basketball team.",
+            "description2": "One article published in Journal. Three articles published in Conferences.",
+            "skills": "· Mechanical Engineering · Engineering · Python · Matlab · Excel"
+        }
+    },
+    {
+        "model": "cv_pdf_view.socialmedia",
+        "pk": 1,
+        "fields": {
+            "path": "https://www.linkedin.com/in/catarina-e-mendes/"
+        }
+    },
+    {
+        "model": "cv_pdf_view.socialmedia",
+        "pk": 2,
+        "fields": {
+            "path": "https://github.com/cathesposito"
+        }
+    },
+    {
+        "model": "cv_pdf_view.socialmedia",
+        "pk": 3,
+        "fields": {
+            "path": "https://gitlab.com/espositc"
+        }
+    },
+    {
+        "model": "cv_pdf_view.language",
+        "pk": 1,
+        "fields": {
+            "language": "Portuguese"
+        }
+    },
+    {
+        "model": "cv_pdf_view.language",
+        "pk": 2,
+        "fields": {
+            "language": "English"
+        }
+    },
+    {
+        "model": "cv_pdf_view.language",
+        "pk": 3,
+        "fields": {
+            "language": "Spanish"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 1,
+        "fields": {
+            "skill": "Work ethic"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 2,
+        "fields": {
+            "skill": "Good communication"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 3,
+        "fields": {
+            "skill": "Excellent problem-solving mindset"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 4,
+        "fields": {
+            "skill": "Creative"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 5,
+        "fields": {
+            "skill": "Adaptable"
+        }
+    },
+    {
+        "model": "cv_pdf_view.softskill",
+        "pk": 6,
+        "fields": {
+            "skill": "Good time management"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 1,
+        "fields": {
+            "skill": "Django"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 2,
+        "fields": {
+            "skill": "Python"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 3,
+        "fields": {
+            "skill": "PostgreSQL"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 4,
+        "fields": {
+            "skill": "Docker"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 5,
+        "fields": {
+            "skill": "JavaScript"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 6,
+        "fields": {
+            "skill": "Unit-testing"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 7,
+        "fields": {
+            "skill": "RestAPI"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 8,
+        "fields": {
+            "skill": "CSS"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 9,
+        "fields": {
+            "skill": "HTML"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 10,
+        "fields": {
+            "skill": "JSON"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 11,
+        "fields": {
+            "skill": "Bootstrap"
+        }
+    },
+    {
+        "model": "cv_pdf_view.hardskill",
+        "pk": 12,
+        "fields": {
+            "skill": "jQuery"
+        }
+    }
+]
