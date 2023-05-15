@@ -73,6 +73,20 @@ class PdfCreatorPort:
 
         # ----------------------------------------------------
 
+        # Image ---------------------------------------------------------------
+
+        image_path = PersonalInfo.objects.values_list(
+            'picture', flat=True).first()
+        
+        image_path= f"media/{image_path}"
+
+        picture = Image(image_path, 60, 60)
+
+        w, h = picture.wrap(doc.width, doc.topMargin)
+
+        picture.drawOn(canvas, doc.leftMargin + 2.3*w, doc.height + doc.topMargin - 0.85*h)
+
+
         # position ------------------------------------------
 
         header_text2_style = ParagraphStyle('My Para style',
