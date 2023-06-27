@@ -100,3 +100,25 @@ class HardSkill(models.Model):
 
     def __str__(self):
         return f"{self.skill}"
+
+
+class Company(models.Model):
+    position = models.TextField()
+
+    name = models.TextField(null=True)
+
+    def __str__(self):
+        return f"{self.name}"
+    
+class CoverLetter(models.Model):
+    resume = models.TextField()
+
+    resume2 = models.TextField(null=True)
+
+    resume3 = models.TextField(null=True)
+
+    company = models.ForeignKey(Company,
+                                on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.resume}"

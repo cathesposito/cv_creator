@@ -1,5 +1,5 @@
 from io import BytesIO
-from cv_pdf_view.models import PersonalInfo, Study, Job, SocialMedia, Language, HardSkill, SoftSkill
+from cv_pdf_view.models import PersonalInfo, Study, Job, SocialMedia, Language, HardSkill, SoftSkill, CoverLetter, Company
 
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Image, Table, TableStyle, HRFlowable
 from reportlab.lib.pagesizes import letter
@@ -207,7 +207,7 @@ class PdfCreatorPort:
 
         return bullet_style
 
-    def build_pdf(self):
+    def build_pdf(self, pk):
 
         pdf_buffer = BytesIO()
 
@@ -229,6 +229,24 @@ class PdfCreatorPort:
         bullet_style = self.get_bullet_style()
 
         flowables = []
+
+        # Company ----------------------------------------------------
+
+        position = Company.objects.values_list(
+            'position', flat=True).get(pk=pk)
+        
+        name = Company.objects.values_list(
+            'name', flat=True).get(pk=pk)
+
+        flowables.append(Paragraph(position, body_style))
+
+        flowables.append(Paragraph(name, body_style))
+
+
+        flowables.append(HRFlowable(width='100%', thickness=2, color='#D1C7FF', spaceAfter=10,
+                                    vAlign='MIDDLE', lineCap='round'))
+
+        # ---------------------------------------------------------------------
 
         # Resume Objective ----------------------------------------------------
 
@@ -360,6 +378,245 @@ class PdfCreatorPort:
 
         flowables.append(HRFlowable(width='100%', thickness=2, color='#D1C7FF', spaceAfter=10,
                                     vAlign='MIDDLE', lineCap='round'))
+
+        my_doc.build(
+            flowables,
+            onFirstPage=self.header_footer,
+            onLaterPages=self.header_footer,
+        )
+
+        pdf_value = pdf_buffer.getvalue()
+        pdf_buffer.close()
+        return pdf_value
+
+
+class PdfCreatorPort2:
+    def header_footer(self, canvas, doc):
+        canvas.saveState()
+
+        # header image --------------------------------------
+
+        header_image = Image('media/images/5.png', doc.width, 60)
+
+        w, h = header_image.wrap(doc.width, doc.topMargin)
+
+        header_image.drawOn(canvas, (doc.leftMargin),
+                            doc.height + doc.topMargin - 0.85*h)
+
+        # ----------------------------------------------------
+
+        # my info -------------------------------------------
+
+        my_info = PersonalInfo.objects.all()
+        for row in my_info:
+            name = str(row.name)
+            position = str(row.position)
+            address = str(row.address)
+            phone = str(row.phone)
+            email = str(row.email)
+
+        # name ----------------------------------------------
+        header_text1_style = ParagraphStyle('My Para style',
+                                            fontSize=16,
+                                            fontName='VeraBd',
+                                            )
+
+        header_text1 = Paragraph(name, header_text1_style)
+
+        w, h = header_text1.wrap(doc.width, doc.bottomMargin)
+
+        header_text1.drawOn(canvas, 0.36*w - doc.leftMargin,
+                            doc.height + doc.topMargin - 1.5*h)
+
+        # ----------------------------------------------------
+
+        # position ------------------------------------------
+
+        header_text2_style = ParagraphStyle('My Para style',
+                                            fontSize=12,
+                                            fontName='Vera',
+                                            )
+
+        header_text2 = Paragraph(position, header_text2_style)
+
+        w, h = header_text2.wrap(doc.width, doc.bottomMargin)
+
+        header_text2.drawOn(canvas, 0.425*w - doc.leftMargin,
+                            doc.height + doc.topMargin - 3.3*h)
+
+        # ----------------------------------------------------
+
+        # phone ---------------------------------------------
+
+        header_text3_style = ParagraphStyle('My Para style',
+                                            fontSize=10,
+                                            fontName='Vera',
+                                            )
+
+        phone = f"Cel: {phone}"
+
+        header_text3 = Paragraph(phone, header_text3_style)
+
+        w, h = header_text3.wrap(doc.width, doc.bottomMargin)
+
+        header_text3.drawOn(canvas, doc.leftMargin,
+                            doc.height + doc.topMargin - 5.3*h)
+
+        # ----------------------------------------------------
+
+        # email -------------------------------------------
+
+        header_text4_style = ParagraphStyle('My Para style',
+                                            fontSize=10,
+                                            fontName='Vera',
+                                            )
+
+        header_text4 = Paragraph(email, header_text4_style)
+
+        w, h = header_text4.wrap(doc.width, doc.bottomMargin)
+
+        header_text4.drawOn(canvas, doc.leftMargin + 0.38*w,
+                            doc.height + doc.topMargin - 5.3*h)
+
+        # ----------------------------------------------------
+
+        # address -------------------------------------------
+
+        header_text5_style = ParagraphStyle('My Para style',
+                                            fontSize=10,
+                                            fontName='Vera',
+                                            )
+
+        header_text5 = Paragraph(address, header_text5_style)
+
+        w, h = header_text5.wrap(doc.width, doc.bottomMargin)
+
+        header_text5.drawOn(canvas, doc.leftMargin + 0.805*w,
+                            doc.height + doc.topMargin - 5.3*h)
+
+        # ----------------------------------------------------
+
+        # hr ------------------------------------------------
+        canvas.setStrokeColorRGB(0.824, 0.78, 1)
+
+        canvas.line(doc.leftMargin, doc.height + doc.topMargin -
+                    5.65*h, doc.leftMargin + w, doc.height + doc.topMargin - 5.65*h)
+
+        # ----------------------------------------------------
+
+        # hr for footer --------------------------------------
+        canvas.setStrokeColorRGB(0.824, 0.78, 1)
+
+        canvas.line(doc.leftMargin, 2*h, doc.leftMargin + w, 2*h)
+
+        # ----------------------------------------------------
+
+        # footer -------------------------------------------
+
+        footer_style = ParagraphStyle('My Para style',
+                                      fontSize=8,
+                                      fontName='Vera',
+                                      )
+
+        footer = Paragraph(
+            'PDF created using CV Creator. https://github.com/cathesposito/cv_creator :)', footer_style)
+
+        w, h = footer.wrap(doc.width, doc.bottomMargin)
+
+        footer.drawOn(canvas, doc.leftMargin, 0.5*h)
+
+        # ----------------------------------------------------
+
+        canvas.setTitle("CV Creator")
+
+        canvas.restoreState()
+
+    def get_body_style(self):
+        sample_style_sheet = getSampleStyleSheet()
+        body_style = sample_style_sheet['BodyText']
+        body_style.spaceAfter = 5*mm
+        body_style.wordWrap = 'CJK'
+        body_style.fontName = 'Vera'
+        body_style.fontSize = 10
+
+        return body_style
+
+    def get_heading1_style(self):
+        sample_style_sheet = getSampleStyleSheet()
+        heading1_style = sample_style_sheet['Heading1']
+        heading1_style.alignment = 1
+        heading1_style.spaceAfter = 5*mm
+
+        return heading1_style
+
+    def get_heading2_style(self):
+        sample_style_sheet = getSampleStyleSheet()
+        heading2_style = sample_style_sheet['Heading2']
+        heading2_style.spaceAfter = 3*mm
+
+        return heading2_style
+
+    def build_pdf(self, pk):
+
+        pdf_buffer = BytesIO()
+
+        my_doc = SimpleDocTemplate(
+            pdf_buffer,
+            pagesize=PAGESIZE,
+            topMargin=BASE_MARGIN*6,
+            leftMargin=BASE_MARGIN,
+            rightMargin=BASE_MARGIN,
+            bottomMargin=BASE_MARGIN,
+        )
+
+        heading1_style = self.get_heading1_style()
+
+        heading2_style = self.get_heading2_style()
+
+        body_style = self.get_body_style()
+
+        flowables = []
+
+        # Get company info ----------------------------------------------------
+
+        position = Company.objects.values_list(
+            'position', flat=True).get(pk=pk)
+
+        paragraph_1 = f"Position: {position}"
+
+        name = Company.objects.values_list('name', flat=True).get(pk=pk)
+
+        paragraph_2 = f"Company: {name}"
+
+        flowables.append(Paragraph(paragraph_1, heading2_style))
+        flowables.append(Paragraph(paragraph_2, heading2_style))
+
+        flowables.append(HRFlowable(width='100%', thickness=2, color='#D1C7FF', spaceAfter=10,
+                                    vAlign='MIDDLE', lineCap='round'))
+
+        # ---------------------------------------------------------------------
+
+
+        # Cover Letter ----------------------------------------------------
+
+        flowables.append(Paragraph("Cover Letter", heading1_style))
+
+        resume = CoverLetter.objects.values_list(
+            'resume', flat=True).first()
+
+        resume2 = CoverLetter.objects.values_list(
+            'resume2', flat=True).first()
+
+        resume3 = CoverLetter.objects.values_list(
+            'resume3', flat=True).first()
+
+        flowables.append(Paragraph(resume, body_style))
+
+        if resume2 is not None:
+            flowables.append(Paragraph(resume2, body_style))
+
+        if resume3 is not None:
+            flowables.append(Paragraph(resume3, body_style))
 
         my_doc.build(
             flowables,

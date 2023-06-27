@@ -10,7 +10,7 @@
             "address": "Kitchener, ON, Canada",
             "phone": "5198303648",
             "resume_objective": "Web developer with 2+ years of experience providing organized and efficient work. Many years of teaching experience gave me tools that makes me a very adaptable and curious person. I began my carrier using pure web development tools, than worked with client own framework and now I am working with high-level python framework called Django, where the internal web application is built.",
-            "linkedin": "https://www.linkedin.com/in/catarina-e-mendes/"
+            "email": "catarina.em12@gmail.com"
         }
     },
     {
@@ -109,6 +109,20 @@
             "description": "Participated in academic research, with the elaboration of articles published in congresses and magazines. I was part of the university's women's basketball team.",
             "description2": "One article published in Journal. Three articles published in Conferences.",
             "skills": "· Mechanical Engineering · Engineering · Python · Matlab · Excel"
+        }
+    },
+    {
+        "model": "cv_pdf_view.study",
+        "pk": 5,
+        "fields": {
+            "title": "The Complete 2021 Web Development Bootcamp, Web Developer Full Stack",
+            "location": "Udemy",
+            "start": "2020-01-01",
+            "end": "2021-01-29",
+            "current": false,
+            "description": "Web Development Full Stack Bootcamp to learn to code through building fun and useful projects, building websites and web apps learn about the latest frameworks with more than 65 hours of content.",
+            "description2": "",
+            "skills": "· HTML, · CSS, · Bootstrap, · JavaScript, · jQuery, · Unix Command Line, · Node.js, · Express.js, · APIs, · Git, · GitHub, · EJS, · Databases, · SQL, · MongoDB, · Mongoose, · React.js, etc."
         }
     },
     {

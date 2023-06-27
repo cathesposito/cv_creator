@@ -1,0 +1,36 @@
+{% extends "base_page.html" %}
+{% load static %}
+
+{% block heading %} {{ title }} {% endblock %}
+
+{% block main %}
+
+<div class="grid-row">
+
+
+    <table class="table grid-item">
+        <thead>
+            {% for header in table_headers %}
+            <th scope="col">{{ header }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for d in data %}
+            <tr>
+                <td>{{ d.id }}</td>
+                <td>{{ d.position }}</td>
+                <td>{{ d.name }}</td>
+                <td> <a class="btn btn-update grid-item" href="{% url 'company_update' pk=d.id %}">Update</a> </td>
+                <td> <a class="btn btn-print grid-item" href="{% url 'company_as_pdf' pk=d.id %}"
+                        role="button" target="_blank">Print CV</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<a class="btn btn-bolder btn-update" href="{% url 'company_create' %}" role="button">New Letter</a>
+
+
+{% endblock %}

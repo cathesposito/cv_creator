@@ -1,0 +1,15 @@
+{% extends "base_page.html" %}
+
+{% block heading %} Update Company Info {% endblock %}
+
+{% block main %}
+
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_table }}
+    <div class="grid-row">
+        <input class="btn btn-update grid-item" type="submit" value="Update">
+        <a class="btn btn-red grid-item" href="{% url 'home' %}" role="button">Back</a>
+    </div>
+</form>
+
+{% endblock %}

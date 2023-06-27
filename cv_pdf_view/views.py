@@ -1,9 +1,10 @@
 from django.views.generic.edit import UpdateView
-from .models import PersonalInfo, Job, Study, SocialMedia, SoftSkill, HardSkill, Language
-from django.views.generic import View
+from .models import PersonalInfo, Job, Study, SocialMedia, SoftSkill, HardSkill, Language, CoverLetter, Company
+from django.views.generic import View, CreateView, UpdateView
 from django.shortcuts import render
 from django.http import HttpResponse
-from .pdf_cv_view import PdfCreatorPort
+from .pdf_cv_view import PdfCreatorPort, PdfCreatorPort2
+from django.urls import reverse_lazy
 
 
 class PersonalInfoView(View):
@@ -144,3 +145,97 @@ class HardSkillView(View):
 
         return render(
             request, 'other_models_view.html', {'title': title, 'data': data, 'table_headers': table_headers, 'dict_part': dict_part})
+
+
+class CompanyView(View):
+    def get(self, request, *args, **kwargs):
+        data = Company.objects.all()
+
+        title = "Company Info"
+
+        dict_part = Company.objects.values_list().all()
+
+        field_names = [
+            field.name for field in Company._meta.get_fields()]
+        
+        popped_item = field_names.pop(0)
+
+        table_headers = [i.capitalize().replace('_', ' ').title()
+                         for i in field_names]
+
+        return render(
+            request, 'company_view.html', {'title': title, 'data': data, 'table_headers': table_headers, 'dict_part': dict_part})
+
+
+class CompanyPdfView(View):
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+
+        pdf = PdfCreatorPort().build_pdf(pk)
+
+        response = HttpResponse(content_type='application/pdf')
+        response.write(pdf)
+
+        return response
+
+
+class CompanyUpdateView(UpdateView):
+    model = Company
+    fields = '__all__'
+    template_name = 'update_company_view.html'
+    success_url = '/cv_pdf_view/company'
+    success_message = "Info were updated successfully"
+
+
+class CompanyCreateView(CreateView):
+    model = Company
+    fields = '__all__'
+    template_name = 'create_company_view.html'
+    success_url = reverse_lazy('company')
+    success_message = 'Info was created successfully'
+
+
+class CoverLetterView(View):
+    def get(self, request, *args, **kwargs):
+        data = CoverLetter.objects.all()
+
+        title = "Cover Letter Info"
+
+        dict_part = CoverLetter.objects.values_list().all()
+
+        field_names = [
+            field.name for field in CoverLetter._meta.get_fields()]
+
+        table_headers = [i.capitalize().replace('_', ' ').title()
+                         for i in field_names]
+
+        return render(
+            request, 'cover_letter_view.html', {'title': title, 'data': data, 'table_headers': table_headers, 'dict_part': dict_part})
+
+
+class CoverLetterPdfView(View):
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+
+        pdf = PdfCreatorPort2().build_pdf(pk)
+
+        response = HttpResponse(content_type='application/pdf')
+        response.write(pdf)
+
+        return response
+
+
+class CoverLetterUpdateView(UpdateView):
+    model = CoverLetter
+    fields = '__all__'
+    template_name = 'update_cover_letter_view.html'
+    success_url = '/cv_pdf_view/cover_letter'
+    success_message = "Info were updated successfully"
+
+
+class CoverLetterCreateView(CreateView):
+    model = CoverLetter
+    fields = '__all__'
+    template_name = 'create_cover_letter_view.html'
+    success_url = reverse_lazy('cover_letter')
+    success_message = 'Info was created successfully'

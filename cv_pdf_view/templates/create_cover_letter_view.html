@@ -1,0 +1,15 @@
+{% extends "base_page.html" %}
+
+{% block heading %} Create Cover Letter Info {% endblock %}
+
+{% block main %}
+
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_table }}
+    <div class="grid-row">
+        <input class="btn btn-update grid-item" type="submit" value="Create">
+        <a class="btn btn-red grid-item" href="{% url 'cover_letter' %}" role="button">Back</a>
+    </div>
+</form>
+
+{% endblock %}
